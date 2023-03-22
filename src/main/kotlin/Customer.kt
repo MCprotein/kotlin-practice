@@ -1,5 +1,6 @@
 package my.demo
 
+import java.awt.Rectangle
 import java.io.File
 //import java.lang.IllegalStateException
 
@@ -176,3 +177,29 @@ fun theAnswer2(): Int {
 }
 
 // Call multiple methods on an object instance (with)
+fun aho() {
+    class Turtle {
+        fun penDown() {}
+        fun penUp() {}
+        fun turn(degrees: Double) {}
+        fun forward(pixels: Double) {}
+        var test: String = "String"
+    }
+
+    // Configure properties of an object (apply)
+    val myTurtle = Turtle().apply { test = "Number" }
+
+    with(myTurtle) {
+        println(test)
+        penDown()
+        for (i in 1..4) {
+            forward(100.0)
+            turn(90.0)
+        }
+        penUp()
+    }
+}
+
+// Generic function that requires the generic type information
+inline fun
+
