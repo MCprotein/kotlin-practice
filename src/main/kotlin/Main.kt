@@ -1,5 +1,6 @@
 // Package definition and imports
 package my.demo
+import java.lang.Integer.*
 import kotlin.text.*
 
 fun main() {
@@ -131,9 +132,73 @@ fun main() {
         print(x)
     }
 
+    println()
+
     // Collections
     when {
         "orange" in items -> println("juicy")
         "apple" in items -> println("apple is fine too")
     }
+
+    val fruits = listOf("banana", "avocado", "apple", "kiwifruit")
+    fruits
+        .filter { it.startsWith("a") }
+        .sortedBy { it }
+        .forEach{ println(it) }
+
+    // Nullable values and null checks
+    fun printProduct(arg1: String, arg2: String) {
+        val xx = parseInt(arg1)
+        val yy = parseInt(arg2)
+
+        if (xx != null && yy != null) {
+            println(xx * yy)
+        } else {
+            println("'$arg1' or '$arg2' is not a number")
+        }
+    }
+
+    fun printProduct2(arg1: String, arg2: String) {
+        val xx = parseInt(arg1)
+        val yy = parseInt(arg2)
+
+        if (xx == null) {
+            println("Wrong number format is arg1: '$arg1'")
+            return
+        }
+        if (yy == null) {
+            println("Wrong number format in arg2: '$arg2'")
+            return
+        }
+
+        println(xx * yy)
+    }
+
+    printProduct("0", "2")
+    printProduct2("0", "2")
+
+    // Type checks and automatic casts
+    fun getStringLength(obj: Any): Int? {
+        if (obj is String) {
+            return obj.length
+        }
+        return null
+    }
+    println(getStringLength("apple"))
+    println(getStringLength(1234))
+
+    fun getStringLength2(obj: Any): Int? {
+        if (obj !is String) {
+            return null
+        }
+        return obj.length
+    }
+
+    fun getStringLength3(obj: Any): Int? {
+        if (obj is String && obj.length > 0) {
+            return obj.length
+        }
+        return null
+    }
+
 }
