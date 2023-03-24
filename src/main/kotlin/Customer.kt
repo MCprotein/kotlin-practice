@@ -2,12 +2,14 @@ package my.demo
 
 import java.awt.Rectangle
 import java.io.File
+import java.math.BigDecimal
+
 //import java.lang.IllegalStateException
 
 // DTO(POJO/POCO) 만들기
 data class Customer(val name: String, val email: String)
 
-fun main() {
+fun main2() {
     // 함수 매개변수의 기본값
     fun foo(a: Int = 0, b: String = "") {}
 
@@ -28,7 +30,7 @@ fun main() {
     // 인스턴스 체크
     when (name) {
         is String -> println(1)
-        is Customer -> println(2)
+//        is Customer -> println(2)
         else -> println(3)
     }
 
@@ -60,10 +62,10 @@ fun main() {
     (1..10).forEach { _ -> }
 
     // Lazy property
-    val p: String by lazy {
-        // 초기화 코드
-    }
-    p = "abc"
+//    val p: String by lazy {
+//        // 초기화 코드
+//    }
+//    p = "abc"
 
     // 함수 확장
     fun String.spaceToCamelCase() {
@@ -198,8 +200,33 @@ fun aho() {
         }
         penUp()
     }
+
+    // Nullable Boolean
+    val b: Boolean? = true
+    if (b == true) {
+        println("wow")
+    }
+
+    var aa = 1
+    var bb = 2
+    aa = bb.also { bb = aa }
 }
 
-// Generic function that requires the generic type information
-inline fun
+fun main() {
+    var a = 1
+    var b = 2
+    // Swap two variables
+    a = b.also {
+        println(a)
+        b = a
+    }
+    println(a)
+
+    // Mark code as incomplete (TODO)
+    fun calcTaxes(): BigDecimal = TODO("Waiting for feedback from accounting")
+    println(calcTaxes())
+    println("wow")
+}
+
+
 
